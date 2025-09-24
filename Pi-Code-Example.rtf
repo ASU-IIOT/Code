@@ -1,0 +1,264 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2822
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;\f1\fnil\fcharset0 Menlo-Bold;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red47\green180\blue29;\red46\green174\blue187;
+\red255\green255\blue255;\red180\green36\blue25;\red200\green20\blue201;}
+{\*\expandedcolortbl;;\csgray\c0;\cssrgb\c20241\c73898\c14950;\cssrgb\c20199\c73241\c78251;
+\csgray\c100000;\cssrgb\c76411\c21697\c12527;\cssrgb\c83397\c23074\c82666;}
+\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f0\fs22 \cf2 \CocoaLigature0 hello.py \
+\
+print(
+\f1\b \cf3 "Hello from Raspberry Pi!"
+\f0\b0 \cf2 )\
+x=4\
+y=5\
+z=x+y\
+print(z)\
+\
+hello_sh.py\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f1\b \cf4 from
+\f0\b0 \cf2  sense_hat 
+\f1\b \cf4 import
+\f0\b0 \cf2  SenseHat\
+sense= SenseHat()\
+sense.show_message (
+\f1\b \cf3 "Hello World"
+\f0\b0 \cf2 )\
+\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf5 \cb2   GNU nano 7.2                      dht22_read.py                               \cf2 \cb1 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f1\b \cf4 import
+\f0\b0 \cf2  time\
+
+\f1\b \cf4 import
+\f0\b0 \cf2  adafruit_dht\
+
+\f1\b \cf4 import
+\f0\b0 \cf2  board\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f1\b \cf6 # Use GPIO4 (Pin 7 on Raspberry Pi)
+\f0\b0 \cf2 \
+dht_device = adafruit_dht.DHT22(board.D4)\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f1\b \cf4 while
+\f0\b0 \cf2  
+\f1\b \cf7 True
+\f0\b0 \cf2 :\
+    
+\f1\b \cf4 try
+\f0\b0 \cf2 :\
+        temperature_c = dht_device.temperature\
+        humidity = dht_device.humidity\
+\
+        
+\f1\b \cf4 if
+\f0\b0 \cf2  temperature_c 
+\f1\b \cf4 is
+\f0\b0 \cf2  
+\f1\b \cf4 not
+\f0\b0 \cf2  
+\f1\b \cf7 None
+\f0\b0 \cf2  
+\f1\b \cf4 and
+\f0\b0 \cf2  humidity 
+\f1\b \cf4 is
+\f0\b0 \cf2  
+\f1\b \cf4 not
+\f0\b0 \cf2  
+\f1\b \cf7 None
+\f0\b0 \cf2 :\
+            print(f
+\f1\b \cf3 "Temperature: \{temperature_c:.1f\}\'b0C"
+\f0\b0 \cf2 )\
+            print(f
+\f1\b \cf3 "Humidity: \{humidity:.1f\}%"
+\f0\b0 \cf2 )\
+        
+\f1\b \cf4 else
+\f0\b0 \cf2 :\
+            print(
+\f1\b \cf3 "Sensor returned None values"
+\f0\b0 \cf2 )\
+\
+    
+\f1\b \cf4 except
+\f0\b0 \cf2  RuntimeError 
+\f1\b \cf4 as
+\f0\b0 \cf2  error:\
+       
+\f1\b \cf6  # Sometimes you get errors from the sensor, just retry\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f0\b0 \cf5 \cb2   GNU nano 7.2                    dht_streamlit.py                              \cf2 \cb1 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f1\b \cf4 import
+\f0\b0 \cf2  time\
+
+\f1\b \cf4 import
+\f0\b0 \cf2  pandas 
+\f1\b \cf4 as
+\f0\b0 \cf2  pd\
+
+\f1\b \cf4 import
+\f0\b0 \cf2  streamlit 
+\f1\b \cf4 as
+\f0\b0 \cf2  st\
+
+\f1\b \cf4 import
+\f0\b0 \cf2  adafruit_dht\
+
+\f1\b \cf4 import
+\f0\b0 \cf2  board\
+
+\f1\b \cf4 from
+\f0\b0 \cf2  datetime 
+\f1\b \cf4 import
+\f0\b0 \cf2  datetime\
+
+\f1\b \cf4 from
+\f0\b0 \cf2  streamlit_autorefresh 
+\f1\b \cf4 import
+\f0\b0 \cf2  st_autorefresh 
+\f1\b \cf6  # optional, see note below
+\f0\b0 \cf2 \
+\
+st.set_page_config(page_title=
+\f1\b \cf3 "DHT22 Live Readings"
+\f0\b0 \cf2 , layout=
+\f1\b \cf3 "centered"
+\f0\b0 \cf2 )\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f1\b \cf6 # Session state for data buffer
+\f0\b0 \cf2 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f1\b \cf4 if
+\f0\b0 \cf2  
+\f1\b \cf3 "rows"
+\f0\b0 \cf2  
+\f1\b \cf4 not
+\f0\b0 \cf2  
+\f1\b \cf4 in
+\f0\b0 \cf2  st.session_state:\
+    st.session_state.rows = []\
+\
+st.title(
+\f1\b \cf3 "DHT22 \'95 Temperature & Humidity (GPIO4)"
+\f0\b0 \cf2 )\
+st.caption(
+\f1\b \cf3 "Auto-refresh grabs one new sample each cycle and updates the chart.
+\f0\b0 \cf5 \cb2 >\cf2 \cb1 \
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f1\b \cf6 # Controls
+\f0\b0 \cf2 \
+interval = st.sidebar.slider(
+\f1\b \cf3 "Sample interval (seconds)"
+\f0\b0 \cf2 , 1, 10, 2)\
+max_points = st.sidebar.slider(
+\f1\b \cf3 "Max points kept"
+\f0\b0 \cf2 , 50, 1000, 200)\
+\
+\cf5 \cb2  GNU nano 7.2                    orientation_sh.py                             \cf2 \cb1 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f1\b \cf4 from
+\f0\b0 \cf2  sense_hat 
+\f1\b \cf4 import
+\f0\b0 \cf2  SenseHat\
+
+\f1\b \cf4 import
+\f0\b0 \cf2  time\
+sense = SenseHat()\
+sense.clear()\
+\
+\
+
+\f1\b \cf4 while
+\f0\b0 \cf2  
+\f1\b \cf7 True
+\f0\b0 \cf2 :\
+        o = sense.get_orientation()\
+        pitch = o[
+\f1\b \cf3 "pitch"
+\f0\b0 \cf2 ]\
+        roll = o[
+\f1\b \cf3 "roll"
+\f0\b0 \cf2 ]\
+        yaw = o[
+\f1\b \cf3 "yaw"
+\f0\b0 \cf2 ]\
+        print(
+\f1\b \cf3 "pitch \{0\} roll \{1\} yaw \{2\}"
+\f0\b0 \cf2 .format(pitch, roll, yaw))\
+        time.sleep(3)\
+\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf5 \cb2   GNU nano 7.2                     pressure_sh.py                               \cf2 \cb1 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f1\b \cf4 import
+\f0\b0 \cf2  time\
+
+\f1\b \cf4 from
+\f0\b0 \cf2  sense_hat 
+\f1\b \cf4 import
+\f0\b0 \cf2  SenseHat\
+\
+sense = SenseHat()\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f1\b \cf6 # very simple ranges (adjust if you want)
+\f0\b0 \cf2 \
+TEMP_MIN, TEMP_MAX = 28.0, 40.0  
+\f1\b \cf6  # \'b0C
+\f0\b0 \cf2 \
+HUM_MIN,  HUM_MAX  = 30.0, 60.0  
+\f1\b \cf6  # %RH
+\f0\b0 \cf2 \
+PRES_MIN, PRES_MAX = 950.0, 1030.0 
+\f1\b \cf6  # hPa
+\f0\b0 \cf2 \
+\
+GREEN = (0, 255, 0)\
+RED   = (255, 0, 0)\
+OFF   = (0, 0, 0)\
+\
+i=1\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f1\b \cf4 while
+\f0\b0 \cf2  
+\f1\b \cf7 True
+\f0\b0 \cf2 :\
+\
+        sense.clear()\
+        hum = sense.get_humidity()\
+\
+\
+\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\
+\
+}
