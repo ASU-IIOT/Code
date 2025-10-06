@@ -1,4 +1,4 @@
-# app.py
+# REST API Server Built with Flask. Manages telemetry data about CNC machines  
 from flask import Flask, request, jsonify
 from datetime import datetime, timezone
 from collections import defaultdict
