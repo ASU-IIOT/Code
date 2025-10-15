@@ -6,7 +6,7 @@ BROKER = "broker.hivemq.com"   # change to your LAN broker IP if needed
 PORT   = 1883
 DEVICE = "Machine1"
 
-TOP_TELE = f"lab/telemetry/{DEVICE}"
+TOP_TELE = f"lab/telemetry/{DEVICE}"   # TOP is the short form of topic here
 TOP_CMD  = f"lab/cmd/{DEVICE}"
 
 state = {"setpoint": 22.0}
