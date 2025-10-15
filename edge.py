@@ -18,6 +18,7 @@ def on_connect(c, u, f, rc):
     c.subscribe(TOP_CMD)
 
 def on_message(c, u, msg):
+    """Handle inbound commands: update setpoint if provided."""
     try:
         cmd = json.loads(msg.payload)
         if "setpoint" in cmd:
