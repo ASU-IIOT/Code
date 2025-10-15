@@ -11,7 +11,10 @@ TOP_CMD  = f"lab/cmd/{DEVICE}"
 
 state = {"setpoint": 22.0}
 
+# --- MQTT Callbacks --------------------------------------------------------
+
 def on_connect(c, u, f, rc):
+    """Subscribe to the command topic when the client connects."""
     c.subscribe(TOP_CMD)
 
 def on_message(c, u, msg):
@@ -22,11 +25,15 @@ def on_message(c, u, msg):
     except Exception:
         pass
 
+# --- MQTT Client Setup -----------------------------------------------------
+
 client = mqtt.Client()  # MQTT v3.1.1 (simple default)
 client.on_connect = on_connect
 client.on_message = on_message
 client.connect(BROKER, PORT, 60)
 client.loop_start()
+
+# --- Main publish loop -----------------------------------------------------
 
 try:
     while True:
