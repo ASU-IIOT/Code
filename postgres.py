@@ -8,6 +8,18 @@ PASSWORD = "yourpw"  # change this to your PostgreSQL password
 HOST = "localhost"
 PORT = "5432"
 
+ # --- Connect to PostgreSQL database ---
+conn = pg.connect(
+        dbname=DB_NAME,
+        user=USER,
+        password=PASSWORD,
+        host=HOST,
+        port=PORT
+    )
+
+cur=conn.cursor()
+
+
 def createTable():
     createCMD = """
         CREATE TABLE IF NOT EXISTS manufacturing.machine_cell (
@@ -32,16 +44,6 @@ def bulkInsert():
         FROM STDIN WITH (FORMAT CSV, HEADER, DELIMITER ',')
         """, f)
     
- # --- Connect to PostgreSQL database ---
-conn = pg.connect(
-        dbname=DB_NAME,
-        user=USER,
-        password=PASSWORD,
-        host=HOST,
-        port=PORT
-    )
-
-cur=conn.cursor()
 
 
 
