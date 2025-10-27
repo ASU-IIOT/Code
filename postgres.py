@@ -4,7 +4,7 @@ import psycopg2 as pg
 # --- Database connection parameters ---
 DB_NAME = "MFG598"
 USER = "postgres"        # change if your PostgreSQL username is different
-PASSWORD = "fredi1353"  # change this to your PostgreSQL password
+PASSWORD = "yourpw"  # change this to your PostgreSQL password
 HOST = "localhost"
 PORT = "5432"
 
@@ -46,7 +46,7 @@ cur=conn.cursor()
 
 
 createTable()
-#insertRow()
+insertRow()
 bulkInsert()
 conn.commit()
 
