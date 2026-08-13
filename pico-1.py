@@ -3,7 +3,7 @@ from utime import sleep
 import urandom  # MicroPython random module
 
 sleep(0.01)  # Wait for USB to connect
-print("Hello, Pi Pico!")
+print("Pi Pico Connected")
 
 # Setup LED on GPIO5
 led = Pin(5, Pin.OUT)
