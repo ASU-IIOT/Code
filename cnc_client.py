@@ -1,4 +1,4 @@
-"""Interactive terminal client. Start cnc_server.py first."""
+"""Interactive terminal OPC UA client. Start cnc_server.py first."""
 import asyncio
 from asyncua import Client, ua
 
