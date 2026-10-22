@@ -1,4 +1,4 @@
-"""Local teaching server. Run: python cnc_server.py"""
+"""Local OPC UA server. Run: python cnc_server.py"""
 import asyncio
 from asyncua import Server, ua, uamethod
 
